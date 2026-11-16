@@ -30,18 +30,8 @@ export const AchievementsPage = makePlaceholder(
   'Halloween badges and milestones',
   'in Phase 4',
 );
-export const TeamsPage = makePlaceholder(
-  'Teams',
-  'Create or join a haunted team',
-  'in Phase 6',
-);
 export const LeaderboardPage = makePlaceholder(
   'Leaderboard',
   'Individual and team rankings',
   'in Phase 6',
-);
-export const SettingsPage = makePlaceholder(
-  'Settings',
-  'Repositories, account, and integrations',
-  'in Phase 3',
 );

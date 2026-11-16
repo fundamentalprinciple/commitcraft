@@ -7,13 +7,13 @@ import AppLayout from './components/layout/AppLayout';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
+import TeamsPage from './pages/TeamsPage';
+import SettingsPage from './pages/SettingsPage';
 import {
   IslandPage,
   QuestsPage,
   AchievementsPage,
-  TeamsPage,
   LeaderboardPage,
-  SettingsPage,
 } from './pages/PlaceholderPages';
 
 // Protected route wrapper

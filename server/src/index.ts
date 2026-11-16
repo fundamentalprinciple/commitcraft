@@ -11,8 +11,13 @@ import { createServer } from 'http';
 import { Server as SocketServer } from 'socket.io';
 
 import { connectDB } from './config/db';
+import { configurePassport } from './config/passport';
 import { errorHandler } from './middleware/errorHandler';
 import { logger } from './utils/logger';
+import authRoutes from './routes/auth';
+import userRoutes from './routes/users';
+import repoRoutes from './routes/repos';
+import teamRoutes from './routes/teams';
 
 const app = express();
 const httpServer = createServer(app);
@@ -94,15 +99,20 @@ app.use(
 // ── Passport ─────────────────────────────────────────────────
 app.use(passport.initialize());
 app.use(passport.session());
+configurePassport();
 
 // ── Routes ───────────────────────────────────────────────────
-// (Routes imported after passport config is in place – see Phase 2)
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 app.use('/api/auth', authLimiter);
 app.use('/api/events', webhookLimiter);
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/repos', repoRoutes);
+app.use('/api/teams', teamRoutes);
 
 // ── Error handler (must be last) ─────────────────────────────
 app.use(errorHandler);

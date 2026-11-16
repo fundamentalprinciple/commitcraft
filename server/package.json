@@ -30,6 +30,7 @@
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
     "socket.io": "^4.8.4",
+    "uuid": "^14.0.3",
     "winston": "^3.19.0",
     "zod": "^4.6.7"
   },
@@ -42,6 +43,7 @@
     "@types/node": "^26.6.6",
     "@types/passport": "^1.0.17",
     "@types/passport-github2": "^1.2.9",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.72.2",
     "@typescript-eslint/parser": "^8.72.2",
     "eslint": "^10.15.0",

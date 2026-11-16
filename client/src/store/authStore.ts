@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { authApi } from '../api/auth';
 import type { User } from '../types';
 
 interface AuthState {
@@ -18,13 +19,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   fetchMe: async () => {
     set({ isLoading: true });
     try {
-      const res = await fetch('/api/auth/me', { credentials: 'include' });
-      if (res.ok) {
-        const data = await res.json();
-        set({ user: data.data, isAuthenticated: true, isLoading: false });
-      } else {
-        set({ user: null, isAuthenticated: false, isLoading: false });
-      }
+      const user = await authApi.me();
+      set({ user, isAuthenticated: true, isLoading: false });
     } catch {
       set({ user: null, isAuthenticated: false, isLoading: false });
     }
@@ -32,7 +28,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   logout: async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+      await authApi.logout();
     } finally {
       set({ user: null, isAuthenticated: false });
     }
