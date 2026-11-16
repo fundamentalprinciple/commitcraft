@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-halloween-dark text-halloween-ghost font-inter;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-halloween-darker;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-halloween-purple rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-halloween-purple-light;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-halloween-orange/30 text-halloween-ghost;
+  }
+}
+
+@layer components {
+  /* ── Buttons ───────────────────────────────────────────── */
+  .btn-primary {
+    @apply bg-halloween-orange hover:bg-halloween-orange-light text-white font-semibold
+           rounded-lg px-6 py-2.5 transition-all duration-200
+           shadow-halloween hover:shadow-halloween-lg
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply border border-halloween-orange/50 text-halloween-orange
+           hover:bg-halloween-orange/10 rounded-lg px-6 py-2.5
+           transition-all duration-200 font-semibold
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-purple {
+    @apply bg-halloween-purple hover:bg-halloween-purple-light text-white font-semibold
+           rounded-lg px-6 py-2.5 transition-all duration-200
+           shadow-purple hover:shadow-purple-lg
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply bg-halloween-red/20 hover:bg-halloween-red/30 text-halloween-red
+           border border-halloween-red/30 font-semibold
+           rounded-lg px-6 py-2.5 transition-all duration-200
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* ── Cards ─────────────────────────────────────────────── */
+  .card {
+    @apply bg-halloween-violet border border-halloween-purple/30 rounded-xl
+           shadow-card p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:border-halloween-purple/60 hover:shadow-purple
+           hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  .card-glow {
+    @apply card border-halloween-orange/30 shadow-halloween;
+  }
+
+  /* ── Inputs ────────────────────────────────────────────── */
+  .input {
+    @apply bg-halloween-darker border border-halloween-purple/40 rounded-lg
+           px-4 py-2.5 text-halloween-ghost placeholder-halloween-ghost-dim
+           focus:outline-none focus:border-halloween-orange/60
+           focus:ring-1 focus:ring-halloween-orange/30
+           transition-all duration-200 w-full;
+  }
+
+  /* ── Badges ────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-orange {
+    @apply badge bg-halloween-orange/20 text-halloween-orange border border-halloween-orange/30;
+  }
+
+  .badge-purple {
+    @apply badge bg-halloween-purple/30 text-halloween-purple-light border border-halloween-purple/40;
+  }
+
+  .badge-green {
+    @apply badge bg-halloween-green/20 text-halloween-green border border-halloween-green/30;
+  }
+
+  .badge-red {
+    @apply badge bg-halloween-red/20 text-halloween-red border border-halloween-red/30;
+  }
+
+  /* ── Text helpers ──────────────────────────────────────── */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+  }
+
+  .heading {
+    @apply font-cinzel font-bold text-halloween-ghost;
+  }
+
+  /* ── Skeleton loader ───────────────────────────────────── */
+  .skeleton {
+    @apply rounded-lg bg-halloween-purple/20 animate-shimmer;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      rgba(74, 27, 109, 0.1) 0%,
+      rgba(255, 107, 0, 0.08) 50%,
+      rgba(74, 27, 109, 0.1) 100%
+    );
+  }
+
+  /* ── Divider ───────────────────────────────────────────── */
+  .divider {
+    @apply border-t border-halloween-purple/20 my-4;
+  }
+
+  /* ── Tooltip ───────────────────────────────────────────── */
+  .tooltip {
+    @apply absolute z-50 px-3 py-1.5 text-xs rounded-lg
+           bg-halloween-darker border border-halloween-purple/40
+           text-halloween-ghost shadow-card pointer-events-none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
