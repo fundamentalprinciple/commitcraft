@@ -19,6 +19,7 @@ import userRoutes from './routes/users';
 import repoRoutes from './routes/repos';
 import teamRoutes from './routes/teams';
 import eventRoutes from './routes/events';
+import gamificationRoutes from './routes/gamification';
 
 const app = express();
 const httpServer = createServer(app);
@@ -115,6 +116,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/repos', repoRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/gamification', gamificationRoutes);
 
 // ── Error handler (must be last) ─────────────────────────────
 app.use(errorHandler);
@@ -124,6 +126,12 @@ const PORT = parseInt(process.env.PORT ?? '5000', 10);
 
 const start = async () => {
   await connectDB();
+
+  // Seed static data
+  const { seedDefaultQuests } = await import('./services/quest/questService');
+  const { seedAchievements } = await import('./services/achievement/achievementService');
+  await Promise.all([seedDefaultQuests(), seedAchievements()]);
+
   httpServer.listen(PORT, () => {
     logger.info(`CommitCraft server running on port ${PORT}`);
   });

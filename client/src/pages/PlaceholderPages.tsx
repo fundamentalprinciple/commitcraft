@@ -20,16 +20,7 @@ export const IslandPage = makePlaceholder(
   "Your team's 2D haunted kingdom",
   'in Phase 5',
 );
-export const QuestsPage = makePlaceholder(
-  'Quests',
-  'Daily, weekly, and AI-generated quests',
-  'in Phase 4',
-);
-export const AchievementsPage = makePlaceholder(
-  'Achievements',
-  'Halloween badges and milestones',
-  'in Phase 4',
-);
+
 export const LeaderboardPage = makePlaceholder(
   'Leaderboard',
   'Individual and team rankings',

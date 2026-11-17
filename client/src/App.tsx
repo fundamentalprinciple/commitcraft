@@ -9,12 +9,9 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import TeamsPage from './pages/TeamsPage';
 import SettingsPage from './pages/SettingsPage';
-import {
-  IslandPage,
-  QuestsPage,
-  AchievementsPage,
-  LeaderboardPage,
-} from './pages/PlaceholderPages';
+import QuestsPage from './pages/QuestsPage';
+import AchievementsPage from './pages/AchievementsPage';
+import { IslandPage, LeaderboardPage } from './pages/PlaceholderPages';
 
 // Protected route wrapper
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
